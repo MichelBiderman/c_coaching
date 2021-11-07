@@ -1,0 +1,104 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Gestion des actualités{% endblock %}
+
+{% block body %}
+    <div class="container text-center min-height">
+
+        <a class="btn-secondary btn-lg" href="{{ path('admin_avis') }}" style="text-decoration: none;">Les avis</a>
+        <a class="btn-secondary btn-lg" href="{{ path('formules') }}" style="text-decoration: none;">Les formules</a>
+        <a class="btn-secondary btn-lg" href="{{ path('admin_supports') }}" style="text-decoration: none;">Les supports</a>
+    </div>
+    <div class="container" style="margin-top: 3em;">
+    {% for message in app.flashes('message') %}
+        <div class="alert alert-success text-center" role="alert">
+            {{message}}
+        </div>    
+    {% endfor %}
+        <a href="{{ path('add_actus') }}" class="btn btn-success">Ajouter une actu</a>
+        <a href="{{ path('admin_actus_preview') }}" class="btn btn-primary">Visualisation des actus</a>
+        <table class="table table-striped">
+            <thead>
+                <h4>Liste des actualités</h4>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Date de création</th>
+                    <th scope="col">Active</th>
+                    <th scope="col text-right" style="padding-left:4em;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for actu in actus %}
+                    <tr>
+                        <th scope="row">{{ actu.id }}</th>
+                        <td>{{ actu.title }}</td>
+                        <td>{{ actu.createdAt | date }}</td>
+                        <td>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" {{ (actu.active) ? 'checked' : '' }} data-id="{{actu.id}}" class="custom-control-input" id="{{ actu.id }}">
+                                <label class="custom-control-label" for="{{ actu.id }}"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <a href="{{ path('modifier_actus', {id: actu.id}) }}" class="btn btn-secondary">Modifier</a>
+                            <a class="btn btn-danger modal-delete" data-toggle="modal" data-target="#deleteModal" data-id="{{actu.id}}" 
+                            data-titre="{{actu.title}}">
+                                Supprimer
+                            </a>
+                            {# <a href="{{ path('delete_actu', {id: actu.id}) }}" class="btn btn-danger"></a> #}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+  
+        <!-- Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Supprimer cette actu</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body"></div>               
+                    <div class="modal-footer">
+                        <a type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</a>
+                        <a href="#" id="delete" class="btn btn-danger">Supprimer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of the Modal -->
+    </div>
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        window.onload = () => {
+            let supprimer = document.querySelectorAll(".modal-delete")
+            for(let bouton of supprimer){
+                bouton.addEventListener("click", function(){
+                    document.querySelector("#delete").href = `/admin/actu/delete/${this.dataset.id}`
+                    document.querySelector(".modal-body").innerText = `Êtes-vous sûr(e) de vouloir l'actu: "${this.dataset.titre}"`
+                })
+            }
+
+            let active = document.querySelectorAll("[type=checkbox]")
+            for(let bouton of active){
+                bouton.addEventListener("click", function(){
+                    let xmlhttp = new XMLHttpRequest;
+                    console.log(this.dataset.id)
+                    xmlhttp.open("get", `admin/actu/activer/${this.dataset.id}`)
+                    xmlhttp.send()
+                })
+            }
+        }
+    </script>
+    
+{% endblock %}

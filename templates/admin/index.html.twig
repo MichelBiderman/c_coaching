@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page d'administration{% endblock %}
+
+{% block body %}
+<div class="container text-center min-height">
+    <a class="btn-secondary btn-lg" href="{{ path('admin_actus') }}" style="text-decoration: none;">Les actualités</a>
+    <a class="btn-secondary btn-lg" href="{{ path('formules') }}" style="text-decoration: none;">Les formules</a>
+    <a class="btn-secondary btn-lg" href="{{ path('admin_supports') }}" style="text-decoration: none;">Les supports</a>
+    <a class="btn-secondary btn-lg" href="{{ path('admin_avis') }}" style="text-decoration: none;">Poster les avis</a>
+</div>
+
+{% endblock %}

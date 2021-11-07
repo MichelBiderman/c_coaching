@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <div class="container">
+        <h1 class="text-center salmon" style="min-height: 140px;">Les dernières Actus</h1>
+
+        {% for actu in actus %}
+            <div class="card" style="width: 18rem;float:left;margin-left:2em;">
+                <img class="card-img-top" src="{{ asset('upload/' ~ actu.image) }}" alt="{{ actu.title }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ actu.title }}</h5>
+                    <p class="card-text">{{ actu.description | u.truncate(75, '...') | raw }}</p>
+                    <a href="{{ path('actu_detail', {id: actu.id}) }}" class="btn btn-primary">Détails</a>
+                </div>
+            </div>            
+        {% endfor %}
+        <div class="clear" style="clear: both;"></div>
+    </div>
+
+{% endblock %}

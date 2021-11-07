@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Détail{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center salmon" style="min-height: 140px;">Détails de l'actu "{{ actu.title }}"</h1>
+
+   
+        <div class="card">
+            <img class="card-img-top" src="{{ asset('upload/' ~ actu.image) }}" alt="{{ actu.title }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ actu.title }}</h5>
+                <p class="card-text">{{ actu.description | raw }}</p>
+                <a href="{{ path('admin_actus_preview') }}" class="btn btn-secondary">Retour</a>
+            </div>
+        </div>            
+
+    <div class="clear" style="clear: both;"></div>
+</div>
+
+
+
+{% endblock %}

@@ -2,18 +2,66 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
         {% endblock %}
-
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
+        {% block javascripts %}{% endblock %}
+        <title>{% block title %}{% endblock %}</title> 
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <header>
+           <!-- Menu fixe du haut -->
+            <div class="container-fluid" id="accueil">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <div class="top">
+                        <a href="{{ path('app_logout') }}" title="déconnexion"><i class="fas fa-sign-out-alt"></i></a>
+                    </div>  
+                {% endif %} 
+                <div class="container">
+                <a href="{{ path('home') }}"><video id="logo" class="rounded-circle text-center" autoplay="on" src="{{ asset('images/video.mp4') }}" height="250px" width="250px">test</video></a> 
+                    <div class="insta">
+
+                        <a href="https://www.instagram.com/cecilia_or_coaching" target="_blank" title="suivez-moi sur Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" title="suivez-moi sur Linkedin"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <ul class="text-center menu">
+                        <li class="nav-item"><a class="nav-link" href="{{ path('home') }}#index">Le Coaching</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('home') }}#titre">Qui suis-je ?</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('home') }}#coaching">Prestations</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('tarifs') }}">Les Formules</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('contact') }}">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('actus') }}">Actualités</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('avis') }}">Les Avis</a></li>                   
+                    </ul>
+                </div>
+
+            </div>
+            
+        </header>
+        
+        <div class="main">
+            {% block body %}{% endblock %}
+        </div>
+        
+
+        <!-- Footer-->
+        <footer class="py-5 bg-dark" id="footer">
+            <div class="container">
+                <p class="m-0 text-center text-white">Copyright &copy; Site de Cécilia Orsi commencé le 04/08/2021</p>
+                <p class="m-0 text-center text-white">Réalisé par Michel Biderman</p>
+            </div>
+        </footer>
+        
     </body>
 </html>

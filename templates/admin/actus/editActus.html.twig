@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des actus{% endblock %}
+
+{% block body %}
+    <div class="container" style="min-height: 140px;">
+        <h3 class="salmon">{{titre}}</h3>
+        {% for message in app.flashes('message') %}
+            <div class="p-3 my-2 rounded-2 success fx-center txt-center">{{message}}</div>
+        {% endfor %}
+        
+        {{ form_start(form) }}
+        {% if image != '' %}
+            <img src="{{ asset('upload/' ~ image) }}" alt="">
+        {% endif %}
+        
+        {{ form_row(form.title) }}
+        {{ form_row(form.description) }}
+       
+        {{ form_row(form.image) }}
+            <button type="submit" class="btn btn-primary inline">Enregistrer</button>
+            <a href="{{ path('admin_actus') }}" class="btn btn-secondary inline">Retour</a>
+        {{ form_end(form) }}
+            
+        
+        </div>
+        
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Modification des formules{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h3 class="salmon">{{titre}}</h3>
+        {{form_start(form)}}
+        {{form_row(form.name)}}
+        <button type="submit" class="btn btn-primary inline">Enregistrer</button>
+        <a href="{{ path('formules') }}" class="btn btn-secondary inline">Retour</a>
+        {{form_end(form)}}
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Poster un avis{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center salmon" style="min-height: 140px;">Poster votre avis:</h1>
+
+        {{form_start(form)}}
+        {{form_row(form.pseudo)}}
+        {{form_row(form.comment)}}
+            <button type="submit" class="btn btn-primary inline">Enregistrer</button>
+            <a href="{{ path('avis') }}" class="btn btn-secondary inline">Retour</a>
+        {{form_end(form)}}
+    </div>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Gestion des avis{% endblock %}
+
+{% block body %}
+    <div class="container text-center min-height">
+        <a class="btn-secondary btn-lg" href="{{ path('admin_actus') }}" style="text-decoration: none;">Les actualités</a>
+        <a class="btn-secondary btn-lg" href="{{ path('formules') }}" style="text-decoration: none;">Les formules</a>
+        <a class="btn-secondary btn-lg" href="{{ path('admin_supports') }}" style="text-decoration: none;">Les supports</a>
+    </div>
+    <div class="container">
+        {% if (liste == 'all') or (liste == 'published') %}
+            <a class="btn-warning btn-sm" href="{{ path('admin_avis_hidden') }}" style="text-decoration: none;">Les avis non publiés</a>
+        {% elseif (liste == 'hidden') or (liste == 'all') %}
+            <a class="btn-warning btn-sm" href="{{ path('admin_avis_ok') }}" style="text-decoration: none;">Les avis publiés</a>
+        {% endif %}
+        {% if (liste == 'hidden') or (liste == 'published') %}
+            <a class="btn-warning btn-sm" href="{{ path('admin_avis') }}" style="text-decoration: none;">Tous les avis</a>
+        {% elseif liste == 'all' %}
+            <a class="btn-warning btn-sm" href="{{ path('admin_avis_ok') }}" style="text-decoration: none;">Les avis publiés</a>
+        {% endif %}
+    </div>
+    <div class="container">
+        <h1 class="text-center salmon" style="margin-top: 0;">Liste {{ avisPublic }}</h1>
+        <div class="container">
+            {% for message in app.flashes('message') %}
+                <div class="alert alert-success text-center" role="alert">
+                    {{message}}
+                </div>    
+             {% endfor %}
+            {% for avis in avisAll %}
+                <div class="card">
+                    <h5 class="card-header">{{ avis.pseudo }} a posté <span class="date">{{ avis.createdAt | date }}</span></h5>
+                    <div class="card-body">
+                        <p class="card-text">{{ avis.comment|raw }}</p>
+                        {% if avis.active == false %}
+                            <a href="{{ path('avis_activer', {id:avis.id}) }}" class="btn btn-primary">Publier</a>
+                        {% else %}
+                            <a href="{{ path('avis_activer', {id:avis.id}) }}" class="btn btn-primary">Dépublier</a>
+                        {% endif %}
+                        <a class="btn btn-danger modal-delete-avis" data-toggle="modal" data-target="#deleteCommentModal" data-id="{{avis.id}}" 
+                            data-titre="{{ avis.comment|raw }}">
+                                Supprimer
+                        </a>
+                    </div>
+                </div>           
+            {% endfor %}
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="deleteCommentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Supprimer ce commentaire</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body"></div>               
+                    <div class="modal-footer">
+                        <a type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</a>
+                        <a href="#" id="deleteComment" class="btn btn-danger">Supprimer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of the Modal -->
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        window.onload = () => {
+            let supprimer = document.querySelectorAll(".modal-delete-avis")
+            for(let bouton of supprimer){
+                bouton.addEventListener("click", function(){
+                    document.querySelector("#deleteComment").href = `/admin/avis/delete/${this.dataset.id}`
+                    document.querySelector(".modal-body").innerHTML = `Êtes-vous sûr(e) de vouloir supprimer le commentaire suivant: <br><br> ${this.dataset.titre}`
+                })
+            }
+
+            let active = document.querySelectorAll("[type=checkbox]")
+            for(let bouton of active){
+                bouton.addEventListener("click", function(){
+                    let xmlhttp = new XMLHttpRequest;
+                    console.log(this.dataset.id)
+                    xmlhttp.open("get", `admin/actu/activer/${this.dataset.id}`)
+                    xmlhttp.send()
+                })
+            }
+        }
+    </script>
+    
+{% endblock %}

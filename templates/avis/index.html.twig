@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les avis{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="salmon">Liste des avis:</h1>
+        {% for message in app.flashes('message') %}
+            <div class="alert alert-success text-center" role="alert">
+                {{message}}
+            </div>    
+        {% endfor %}
+        <div class="container">
+            {% for avis in avisAll %}
+            <div class="card">
+                <h6 class="card-header">Auteur "{{ avis.pseudo }}"<span class="date">{{ avis.createdAt | date }}</span></h6>
+                <div class="card-body">
+                  <p class="card-text">{{ avis.comment|raw }}</p>
+                </div>
+            </div> 
+            {% endfor %}
+        </div>
+        <h4 class="salmon">N'hesitez pas à nous faire de votre avis:</h4>
+        <a href="{{ path('ajout_avis') }}" class="btn btn-primary">Poster votre avis</a>
+    </div>
+{% endblock %}

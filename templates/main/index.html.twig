@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue{% endblock %}
+
+{% block body %}
+<img src="{{asset('images/plage.png')}}" height="350" width="1080" alt="" class="imgPres" id="imgAccueil">
+<div class="container-fluid marge"></div>
+<div class="container" id="presentation">
+    <h3 class="text-center salmon" id="index"><span class="arrow"><a href="#accueil"><i class="fas fa-arrow-up"></i></span></a>Présentation du coaching</h3>
+    <hr class="margin-bottom"> 
+    <div class="row">
+    
+       <hr class="margin-bottom">
+       <div class="col-sm-8">
+          
+           
+           <p class="para1"> Le coaching a pour but d'accompagner toutes les personnes en quête de sens qui souhaitent aller de l'avant,
+               explorer ses croyances,ses freins, ses ressources, ses besoins et gagner confiance en elles. <br>
+               Il est notamment conseillé, lorsque vous souhaitez : <br>
+               <ul class="star"> 
+                   <li>Définir un projet personnel ou professionnel (Se dépasser, se réorienter, dépasser ses craintes, rebondir après un licenciement...)</li>
+                   <li>Prendre du recul sur une situation</li>   
+                   <li>Gérer des conflits</li>
+                   <li>Comprendre ses émotions</li>
+                   <li>Lever un blocage</li>   
+                   <li>Atteindre un objectif</li>   
+                   <li>Vous libérer de vos croyances limitantes</li>   
+                   <li>Augmenter votre confiance en vous</li>   
+                   <li>Prendre des décisions</li>   
+                   <li>Sortir d'une situation désagréable</li>   
+                   <li>etc...</li>  
+               </ul>
+           </p>
+           <p>
+               Un coaching responsabilise et peut aussi déstabiliser car nous allons chercher en vous les réponses à vos questions et cela bouscule parfois votre système de pensées. <br>
+               Je vous accompagnerai en toute neutralité et sans jugement, tout au long de votre développement et de vos projets.
+           </p>
+           <p>
+        
+               Au cours des consultations, je serai amenée à utiliser différentes techniques telles que : l'analyse transactionnelle, la PNL ainsi que des outils comme La confrontation, le recadrage, le questionnement, la visualisation,
+               etc... 
+               Je propose également de réaliser, dans le cadre d'une demande spécifique, des génosociogrammes.
+           </p>
+       </div>
+       <div class="col-sm-4">
+         <img class="img-thumbnail" src="{{asset('images/decision.jpg')}}" id="elle" alt="elle">
+       </div>
+   </div>
+
+  {% include "main/presentation.html.twig" %}
+  {% include "main/prestation.html.twig" %}
+  {# {% include "main/faq.html.twig" %} #}
+</div>
+
+
+{% endblock %}

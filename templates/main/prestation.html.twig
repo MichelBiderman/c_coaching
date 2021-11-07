@@ -1,0 +1,30 @@
+{% block body %}
+<div class="container" id="coaching">
+    <h4 class="text-center salmon titres" id="coaching1"><span class="arrow"><a href="#accueil"><i class="fas fa-arrow-up"></i></span></a>Mes accompagnements </h4>
+    <hr class="margin-bottom">
+    <div class="row">
+        <div class="col-md-7">
+            <div id="coachingImage" class="presentation">
+                <p>Chacun d'entre nous peut à un moment donné se retrouvé dans une période compliquée.
+                    La vie peut parfois être surprenante... dans tous les sens du terme. <br>
+                    Elle est en constante évolution, comme nous le sommes également.<br>
+                    Il est donc normal de se sentir démuni face à certaines situations, à certains changements (choisis ou non), face à nos manques de décisions, à nos émotions débordantes ou au contraire refoulées, à notre stress...<br>
+                    Ce qui devient problématique, c'est lorsque ces situations et ces émotions nous freinent, nous font souffrir et perdurent dans le temps. <br>
+                    Pour la plupart des gens il est difficile, voire impossible d'avoir une vision claire et du recul sur la situation tant nous sommes en train de la vivre. <br>
+                    Comment prendre le recul necessaire? Par où commencer? Pour tendre vers quoi? <br>
+                    C'est précisément dans ces moments là qu'une personne extérieure, empathe et sans jugement, permet de débloquer la situation, et vous aide à aller de l'avant avec la bonne écoute, les bons outils et des questionnements adéquats pour vous permettre une reflexion appropriée.<br>
+                    Je me propose d'être cette personne, attentive à vos besoins et à vos objectifs ainsi que de vous soutenir tout au long de votre cheminement personnel. <br>
+                    Ce que vous devez faire? Accepter de vous livrer et vous laisser guider par vos réponses. Être parfois prêt à ouvrir certaines portes qu'on a jusque là préféré garder fermées et être dans une véritable optique de changement car les résultats dépendront
+                    de votre investissement. <br>
+                    Si vous vous sentez concernés, si vous souhaitez aller de l'avant et prendre les choses en main, je vous invite à reserver votre séance en cliquant sur le bouton ci-dessous,
+                     si vous hésitez encore n'hésitez pas à me laisser un message dans le formulaire de contact. <br>      
+                </p>
+                <a href="{{ path('contact') }}" class="btn btn-contact">Contact</a>
+            </div>      
+        </div>
+        <div class="col-md-5 text-center">
+            <img src="{{ asset('images/presta_image.jpeg') }}" alt="coach" class="rounded-circle images">
+        </div>
+    </div>
+</div>
+{% endblock %}
