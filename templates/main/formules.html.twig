@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Les Formules{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="container-fluid">
+            <h4 class="salmon" id="coaching1">Les Formules:</h4>
+            
+            <div class="container">
+                <hr class="hr">
+                <div class="row">
+                    <div class="col-md-6" id="step">
+                        <div class="formule">
+                            <img class="rounded img-responsive" id="step" src="{{ asset('images/step-by-step.jpg') }}" alt="step by step">
+                            <div class="fadedbox">
+                                <div class="title text">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat mollitia eius facilis repudiandae expedita voluptates inventore commodi quidem molestiae sed, voluptatum laborum earum neque. Maiores, dolores unde? Beatae, voluptatem voluptate.
+                                    Sequi non adipisci blanditiis, porro reiciendis debitis eius ab sed possimus, quibusdam odit, expedita amet atque! Error dolorum fuga sed ex similique. Veritatis dignissimos perferendis illum deleniti, tenetur labore debitis?
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="formule">
+                            <img class="rounded img-responsive" src="{{ asset('images/cailloux.jpg') }}" alt="pierres">
+                            <div class="fadedbox">
+                                <div class="title text">
+                                   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae, sit corrupti? Tempora corporis sed qui esse fugit voluptatum suscipit molestiae rerum pariatur repellendus laudantium saepe quos odit, laborum, earum at?
+                                   Quod eum laboriosam animi earum velit cumque delectus sapiente dignissimos reiciendis aperiam exercitationem, cum harum accusantium asperiores. Odit sunt natus, cumque ad, totam provident dolor perspiciatis cupiditate, ullam placeat in?
+                                </div>
+                            </div>                 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <ul>
+                <li>Coaching individuel :
+                    <ul>
+                        <li class="textPresta">
+                            <p> 
+                                <span class="tarifs">Coaching 1:1</span>  = 60 euros la séance de 60 minutes à votre domicile ou en visio <br>
+                                (Tarif réduit à 35 euros pour les étudiants) <br>
+                                <span class="tarifs">Pack de 5 séances</span> = 280 euros
+                            </p>
+                            <div class="attention">
+                                Attention ! Je ne coach ni les couples ni les enfants.
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul> -->
+        </div>
+    </div>
+{% endblock %}

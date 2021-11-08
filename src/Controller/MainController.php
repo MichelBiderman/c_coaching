@@ -73,28 +73,16 @@ class MainController extends AbstractController
         ]);
     }
 
-
-    // /**
-    //  * Page des commentaires
-    //  * 
-    //  * @Route("/commentaires", name="commentaires")
-    //  * @return Response
-    //  */
-    // public function commentaires(): Response
-    // {
-    //     return $this->render('main/commentaires.html.twig');
-    // }
-
     
     /**
-     * Page des tarifs
+     * Page des formules
      * 
-     * @Route("/tarifs", name="tarifs")
+     * @Route("/formules", name="formules")
      * @return Response
      */
     public function tarifs(): Response
     {
-        return $this->render('main/tarifs.html.twig');
+        return $this->render('main/formules.html.twig');
     }
 
     /**
