@@ -8,9 +8,7 @@ _ Publier : des actualités pour faire vivre le site
           : possibilité de gérer les formules ainsi que les supports de travail
           : étudier les commentaires et les publier ou pas 
 
-
-
-********* Lancer le serveur 
 php -S 127.0.0.1:8000 -t public
+
 
 

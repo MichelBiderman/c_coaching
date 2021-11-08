@@ -1,16 +1,18 @@
 
- ul, li {
+ul, li {
     list-style: none;
 }
 html{
     scroll-behavior: smooth;
 }
 
-/*      FONTS       */
+/*           FONTS       */
+
 @import url('https://fonts.googleapis.com/css2?family=Mada:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 
-/*      les réseaux sociaux         */
+/*          les réseaux sociaux         */
+
 .insta{
     position: absolute;
     right: 0.1em;
@@ -64,6 +66,8 @@ html{
     color:  #FA8072;
     text-decoration: none;
 }
+
+
 /*   les flèches       */
 
 .arrow>a{
@@ -72,17 +76,26 @@ html{
     -moz-transition: all 2.4s ease-in-out -2s;
     -webkit-transition: all 2.4s ease-in-out -2s;
 }
-.arrow{
-    position: absolute;
-    left: 10%;
-   
+@media (min-width: 576px){
+    .arrow{
+        position: absolute;
+        left: 0.5%;
+    }
+}
+@media (min-width: 576px){
+    .arrow{
+        position: absolute;
+        left: 10%;
+    }
 }
 
 /*       Images      */
+
 .imgPres{
     opacity: 0.7;
     width: 100%;
 }   
+
 /*       page d'accueil          */
 
 #presentation{
@@ -101,6 +114,7 @@ html{
 }
 
 /*      Page de présentation    */
+
 .presentation{
     color:rgb(66, 66, 66);
     background-color: #F6E2D1;
@@ -122,7 +136,7 @@ html{
     font-family: 'Dancing Script', cursive;
     font-size: 30px;
     color:  #FA8072;
-    margin-top: 3em;
+    margin-top: 1em;
 }
 .hr{
     margin-left: 0;
@@ -153,9 +167,8 @@ html{
     margin-bottom: 1em;
 }
 
-
-
 /*      Footer      */
+
 #footer{
     margin-top: 1em;
     width: 100%;
@@ -193,6 +206,9 @@ html{
 .float-left{
     float: left;
 }
+.img-responsive, .formule{
+    border-radius: 2%;
+}
 @media (max-width: 576px) {
     .img-responsive{
         width: 300px;
@@ -204,27 +220,29 @@ html{
 @media (min-width: 576px){
     .formule {
         cursor: pointer;
-        height: 300px;
-        width: 400px;
+        height: 350px;
+        width: 500px;
         position: relative;
         overflow: hidden;   
-        text-align: justify;
+        /* text-align: justify; */
     }
+
     .formule .fadedbox {
-        background-color: #666666;
+        /* background-color: #666666; */
         position: absolute;
-        top: 0;
-        left: 0;
-        color: #fff;
+        top: -10%;
+        left:0;
+        color: rgb(255, 255, 255);
         -webkit-transition: all 300ms ease-out;
         -moz-transition: all 300ms ease-out;
         -o-transition: all 300ms ease-out;
         -ms-transition: all 300ms ease-out;
         transition: all 300ms ease-out;
         opacity: 0;
-        /* width: 100%; */
-        /* height: 267px; */
+        width: 100%;
+        height: 300px;
         padding: 10px;
+        margin: auto;
     }
     .formule:hover .fadedbox { opacity: 0.8; }
     .formule .text {
@@ -237,22 +255,41 @@ html{
         -webkit-transform: translateY(30px);
     }
     .formule .title {
-        font-size: 1rem;
+        font-size: 1.5rem;
         text-transform: uppercase;
         opacity: 0;
         transition-delay: 0.2s;
         transition-duration: 0.3s;
+        margin: auto;
     }
     .formule:hover .title,
     .formule:focus .title {
         opacity: 1;
         transform: translateY(0px);
         -webkit-transform: translateY(0px);
-    }
-    
+    } 
+}
+.seance{
+    background-color: #FB6B90;
+    color: #fff;
 }
 
-/*    Administration      */
+/*          Les commentaires   */
+
+.date{
+    font-size: 12px;
+    float: right;
+}
+.card-header{
+    font-family:  'Dancing Script', cursive;
+    font-size: 25px;
+    background-color: #f7ddda;
+}
+.card-body{
+    font-family: 'Courgette', cursive;
+}
+
+/*          Administration      */
 
 .min-height{
     min-height: 100px;
@@ -263,12 +300,6 @@ html{
     margin-top: 2em;
 }
 
-/*          Les commentaires admin      */
-
-.date{
-    font-size: 12px;
-    float: right;
-}
 /*           Page de login      */
 .margin{
     margin: 1em 0 1em 0;

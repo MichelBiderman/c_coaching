@@ -15,12 +15,15 @@
         </div>    
     {% endfor %}
     <a href="{{ path('add_formule') }}" class="btn btn-success">Ajouter une formule</a>
+    <a href="{{ path('admin_formules_preview') }}" class="btn btn-primary">Visualisation des formules</a>
     <table class="table table-striped">
         <thead>
-            <h4>Liste des formules</h4>
+            <h4 class="salmon">Liste des formules:</h4>
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Title</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Active</th>
                 <th scope="col" style="padding-left:4em;">Actions</th>
             </tr>
         </thead>
@@ -29,6 +32,13 @@
                 <tr>
                     <th scope="row">{{ formule.id }}</th>
                     <td>{{ formule.name }}</td>
+                    <td>{{ formule.prix }}</td>
+                    <td>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" {{ (formule.active) ? 'checked' : '' }} data-id="{{formule.id}}" class="custom-control-input" id="{{ formule.id }}">
+                            <label class="custom-control-label" for="{{ formule.id }}"></label>
+                        </div>
+                    </td>
                     <td>
                         <a href="{{ path('edit_formule', {id: formule.id}) }}" class="btn btn-secondary">Modifier</a>
                         <a class="btn btn-danger modal-delete" data-toggle="modal" data-target="#deleteFormuleModal" data-id="{{formule.id}}" 
@@ -73,7 +83,18 @@
                     document.querySelector(".modal-body").innerText = `Êtes-vous sûr(e) de vouloir la formule: "${this.dataset.titre}"`
                 })
             }
+
+            let active = document.querySelectorAll("[type=checkbox]")
+            for(let bouton of active){
+                bouton.addEventListener("click", function(){
+                    let xmlhttp = new XMLHttpRequest;
+                    console.log(this.dataset.id)
+                    xmlhttp.open("get", `admin/formule/activer/${this.dataset.id}`)
+                    xmlhttp.send()
+                })
+            }
         }
     </script>
     
 {% endblock %}
+

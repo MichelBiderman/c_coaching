@@ -7,8 +7,16 @@
         <h3 class="salmon">{{titre}}</h3>
         {{form_start(form)}}
         {{form_row(form.name)}}
+        {% if image != '' %}
+            <img src="{{ asset('upload/' ~ image) }}" alt="">
+        {% endif %}
+        {{ form_row(form.image) }}
+        <label for="cke_formule_description" class="salmon" style="margin-top:0px;">Description:</label>
+        {{form_row(form.description)}}
+        {{form_row(form.prix)}}
         <button type="submit" class="btn btn-primary inline">Enregistrer</button>
-        <a href="{{ path('formules') }}" class="btn btn-secondary inline">Retour</a>
+        <a href="{{ path('admin_formules') }}" class="btn btn-secondary inline">Retour</a>
         {{form_end(form)}}
     </div>
 {% endblock %}
+

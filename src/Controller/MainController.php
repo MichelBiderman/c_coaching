@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Actus;
 use App\Form\ContactType;
 use App\Repository\ActusRepository;
+use App\Repository\FormuleRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request as HttpFoundationRequest;
@@ -16,7 +17,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     /**
+     * page d'accueil du site
+     * 
      * @Route("/", name="home")
+     * @return Response
      */
     public function index(): Response
     {
@@ -80,10 +84,13 @@ class MainController extends AbstractController
      * @Route("/formules", name="formules")
      * @return Response
      */
-    public function tarifs(): Response
+    public function tarifs(FormuleRepository $formuleRepo): Response
     {
-        return $this->render('main/formules.html.twig');
+        return $this->render('main/formules.html.twig', [
+            'formules' => $formuleRepo->findBy(['active' => true])
+        ]);
     }
+
 
     /**
      * @Route("/contact", name="contact")

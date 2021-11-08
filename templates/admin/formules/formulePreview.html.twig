@@ -4,7 +4,6 @@
 
 {% block body %}
     <div class="container">
-        <h3 class="text-center salmon">Page encore en construction</h3>
         <h4 class="salmon" id="coaching1">Les Formules:</h4>
         <div class="container text-center">
             <hr class="hr">
@@ -27,6 +26,6 @@
                 {% endfor %}
             </div>
         </div>
-        <a href="{{ path('home') }}" class="btn email">Retour</a>
+        <a href="{{ path('admin_formules') }}" class="btn btn-secondary">Retour</a>
     </div>
 {% endblock %}

@@ -13,7 +13,7 @@
         <div class="container">
             {% for avis in avisAll %}
             <div class="card">
-                <h6 class="card-header">Auteur "{{ avis.pseudo }}"<span class="date">{{ avis.createdAt | date }}</span></h6>
+                <h6 class="card-header">{{ avis.pseudo }}:<span class="date">{{ avis.createdAt | date }}</span></h6>
                 <div class="card-body">
                   <p class="card-text">{{ avis.comment|raw }}</p>
                 </div>
@@ -21,6 +21,6 @@
             {% endfor %}
         </div>
         <h4 class="salmon">N'hesitez pas à nous faire de votre avis:</h4>
-        <a href="{{ path('ajout_avis') }}" class="btn btn-primary">Poster votre avis</a>
+        <a href="{{ path('ajout_avis') }}" class="btn email">Poster votre avis</a>
     </div>
 {% endblock %}
